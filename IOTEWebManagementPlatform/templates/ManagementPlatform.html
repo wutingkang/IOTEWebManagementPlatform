@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>物联网设备监测平台</title>
+
+    <link href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="http://apps.bdimg.com/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://apps.bdimg.com/libs/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="../../static/js/ManagementPlatform.js"></script>
+</head>
+<body background="../../static/img/listBackground.jpg">
+<div class="wrapper">
+
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+             <a href="/logout/" type="button" class="btn pull-right">注销</a> <a href="/login/" type="button" class="btn pull-right">登陆</a>
+
+            <h1> {{ username }} 您好</h1>
+            <div class="btn-group">
+                <button type="button" id="floodlightShowBtn" class="btn btn-danger">照明灯</button>
+                <button type="button" id="temperatureShowBtn" class="btn btn-danger">温度传感器</button>
+                <button type="button" id="humidityShowBtn" class="btn btn-danger">湿度传感器</button>
+            </div>
+            <a id="addSensor" type="button" class="btn btn-success pull-right">添加设备</a>
+            <hr>
+
+            <table id="monitorTable" class="table table-striped" align="left">
+                <thead>
+                <tr>
+                    <th class="text-left" style="width:5%">序号</th>
+                    <th class="text-center" style="width:15%">设备名</th>
+                    <th class="text-center" style="width:15%">工作状态</th>
+                    <th id="realTimeData" class="text-center" style="width:15%">实时数据</th>
+                    <th class="text-center" style="width:15%">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+            <hr>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap modal -->
+<div class="modal fade" id="modal_form" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title">新建传感器</h3>
+            </div>
+            <div class="modal-body form" style="text-align:right;">
+                <form action="#" id="form" class="form-horizontal">
+                    <input type="hidden" value="webWrite" name="writeType"/> <!-- 为了在服务器里的 共用的sensor数据处理函数 里区分post来自web端还是sensor端的而增加的 -->
+                    <input type="hidden" value="" name="id"/>
+                    <input type="hidden" value="" name="deviceStatus"/>
+                    <input type="hidden" value="" name="temperature"/>
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-3">传感器名称：</label>
+
+                            <div class="col-md-9">
+                                <input name="sensorName" placeholder="输入传感器名称" class="form-control" type="text">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <button type="button" id="btnSave" class="btn btn-primary">确定</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">取消</button>
+            </div>
+            <div class="modal-footer" id="controlDiv">
+                <label class="control-label col-md-3">传感器控制：</label>
+                <button type="button" id="btnControl" class="btn btn-danger">暂停监测</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+<!-- End Bootstrap modal -->
+
+</body>
+</html>

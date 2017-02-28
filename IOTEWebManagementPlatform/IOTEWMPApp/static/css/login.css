@@ -1,0 +1,35 @@
+body
+{
+    background-image:url("../img/loginBackground.jpg");
+    background-size:100% 100%;
+}
+
+div.hint
+{
+    position:absolute;
+    left:580px;
+    top:100px;
+}
+.hint h3
+{
+    color:red;
+}
+
+div.myformdiv
+{
+    position:absolute;
+    left:550px;
+    top:250px;
+}
+
+img.loadBackground
+{
+    opacity:0.4;
+    position:absolute;
+    left:550px;
+    top:263px;
+}
+
+p{
+    color:black;
+}
